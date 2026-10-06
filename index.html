@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Minha Lojinha de K-pop</title>
+  <style>
+    /* Estilos simples em CSS para deixar a tela bonita */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card-produto {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    .badge-estoque {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    button {
+      background-color: #25d366; /* Cor do WhatsApp */
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #1eb954;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-produto">
+    <h2 id="nome-produto">Álbum BTS - Proof</h2>
+    <p>Preço: <strong>R$ 180,00</strong></p>
+    <p><span class="badge-estoque">Estoque: <span id="qtd-estoque">3</span> unidades</span></p>
+
+    <!-- O botão que vai disparar nossa função JavaScript -->
+    <button onclick="fazerPedido()">Clique aqui para fazer seu pedidinho</button>
+  </div>
+
+  <!-- Onde colocamos o código JavaScript -->
+  <script>
+    // PASSO 2: O CÓDIGO JAVASCRIPT
+    
+    function fazerPedido() {
+      // 1. Pegando as informações que estão na página HTML através dos IDs
+      const nomeProduto = document.getElementById('nome-produto').innerText;
+      const estoqueAtual = document.getElementById('qtd-estoque').innerText;
+
+      // 2. Definindo o número de WhatsApp (coloque o seu DDD + Número aqui)
+      const numeroWhatsapp = "5521999999999"; 
+
+      // 3. Montando a mensagem personalizada que será enviada
+      const mensagem = `Olá! Quero fazer o pedidinho do produto: *${nomeProduto}*. Vi que tem ${estoqueAtual} no estoque!`;
+
+      // 4. Transformando o texto para um formato legível em links da web (encodeURIComponent)
+      const linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+
+      // 5. Abrindo o link do WhatsApp em uma nova aba
+      window.open(linkWhatsapp, '_blank');
+    }
+  </script>
+
+</body>
+</html>
